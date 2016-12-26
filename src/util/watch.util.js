@@ -31,9 +31,9 @@ function delDirs(path) {
     }
 };
 
-export default function watch(app, callback) {
+export default function watch(appName, runtimeName, callback) {
 
-    const watcher = chokidar.watch(app, {
+    const watcher = chokidar.watch(appName, {
         ignored: /[\/\\]\./,
         persistent: true,
         ignoreInitial: true
@@ -41,7 +41,7 @@ export default function watch(app, callback) {
 
     watcher.on('add', function (filePath, stats) {
 
-        const fileRuntimePath = filePath.replace(`${app}`, `${config.runtime}`);
+        const fileRuntimePath = filePath.replace(`${appName}`, `${runtimeName}`);
         mkdirsSync(path.dirname(fileRuntimePath));
 
         debug(filePath, 'add');
@@ -56,7 +56,7 @@ export default function watch(app, callback) {
 
     watcher.on('unlink', function (filePath, stats) {
 
-        const runtimePath = filePath.replace(`${app}`, `${config.runtime}`);
+        const runtimePath = filePath.replace(`${appName}`, `${runtimeName}`);
         fs.unlinkSync(runtimePath);
 
         debug(filePath, 'unlink');
@@ -65,7 +65,7 @@ export default function watch(app, callback) {
 
     watcher.on('unlinkDir', function (dirPath) {
 
-        const dirRuntimePath = dirPath.replace(`${app}`, `${config.runtime}`);
+        const dirRuntimePath = dirPath.replace(`${appName}`, `${runtimeName}`);
         delDirs(dirRuntimePath);
     });
 }

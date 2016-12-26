@@ -1,22 +1,19 @@
-import program from "commander";
-import path from "path";
 import fs from "fs";
+import path from "path";
 import child_process from "child_process";
 import shell from "shelljs";
+import program from "commander";
 import watch from "./util/watch.util";
 import {debug} from "./util/log.util";
 import config from "./config/index.config";
-
-function isFileSync(path) {
-    return fs.existsSync(path) && fs.statSync(path).isFile();
-}
+import packageFile from "./../package.json";
 
 function fileCopySync(src, dest) {
     fs.writeFileSync(dest, fs.readFileSync(src));
 }
 
 program
-    .version('1.0.0')
+    .version(packageFile.version)
 
 program
     .command('start [script]')
@@ -26,14 +23,11 @@ program
     .option('-r, --runtime [dir]', 'Babel compile and start the dir')
     .action(function (script, options) {
 
-        const app = path.dirname(script) || config.app;
-        const runtime = options.runtime || config.runtime;
-
         const rootPath = process.cwd();
-        const appName = app;
+        const appName = path.dirname(script) || config.app;
         const appPath = path.resolve(rootPath, appName);
         const appFile = path.resolve(rootPath, script);
-        const runtimeName = runtime;
+        const runtimeName = options.runtime || config.runtime;
         const runtimePath = path.resolve(rootPath, runtimeName);
         const runtimeFile = path.resolve(rootPath, script.replace(`${appName}`, `${runtimeName}`));
 
@@ -77,7 +71,7 @@ program
             let time = new Date();
             let files = [];
             // 开启文件监控
-            watch(app, function (filePath, compile = true) {
+            watch(appName, runtimeName, function (filePath, compile = true) {
 
                 if (options.compile == true && compile == true) {
                     let fileRuntimePath = filePath.replace(`${appName}`, `${runtimeName}`);
@@ -119,12 +113,12 @@ program
     });
 
 program
-    .command('controller [name]')
+    .command('controller [file]')
     .description('koahub create controller')
-    .action(function (name) {
+    .action(function (file) {
 
-        const destFile = path.resolve(config.app, `controller/${name}.controller.js`);
-        const srcFile = path.resolve(process.mainModule.filename, '../../', 'template/controller/index.controller.js');
+        const destFile = path.normalize(`${file}.controller.js`);
+        const srcFile = path.normalize(path.resolve(process.mainModule.filename, '../../', 'template/controller/index.controller.js'));
 
         fileCopySync(srcFile, destFile);
     });
