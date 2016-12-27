@@ -32,7 +32,7 @@ program
         const runtimeFile = path.resolve(rootPath, script.replace(`${appName}`, `${runtimeName}`));
 
         const binPath = path.resolve(process.mainModule.filename, '../../');
-        const babel = path.resolve(binPath, 'node_modules/.bin/babel');
+        const babel = path.resolve('node_modules/.bin/babel');
 
         // 监控启动
         if (options.watch) {
