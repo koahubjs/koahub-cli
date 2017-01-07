@@ -2,6 +2,21 @@
 
 KoaHub CLI -- KoaHub.js的开发工具，自动babel编译 ES6/7（Generator Function, Class, Async & Await）并且文件修改后自动重启。
 
+## 特性
+1. ​自动重启
+2. 自动babel编译
+3. 自动创建koahubjs项目
+4. 自动创建控制器
+5. 支持全局命令行
+6. 支持模块启动
+7. ...
+
+## 支持
+```js
+require('koahub-cli').run('start app/index.js --watch --compile');
+```
+
+
 ## 安装使用
 ```sh
 

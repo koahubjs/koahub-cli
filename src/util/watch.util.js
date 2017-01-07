@@ -1,8 +1,6 @@
 import chokidar from "chokidar";
 import fs from "fs";
 import path from "path";
-import {watch as debug} from "./../util/log.util";
-import config from "./../config/index.config";
 
 function mkdirsSync(dirname, mode) {
     if (fs.existsSync(dirname)) {
@@ -44,13 +42,11 @@ export default function watch(appName, runtimeName, callback) {
         const fileRuntimePath = filePath.replace(`${appName}`, `${runtimeName}`);
         mkdirsSync(path.dirname(fileRuntimePath));
 
-        debug(filePath, 'add');
         callback(filePath);
     });
 
     watcher.on('change', function (filePath, stats) {
 
-        debug(filePath, 'change');
         callback(filePath);
     });
 
@@ -59,7 +55,6 @@ export default function watch(appName, runtimeName, callback) {
         const runtimePath = filePath.replace(`${appName}`, `${runtimeName}`);
         fs.unlinkSync(runtimePath);
 
-        debug(filePath, 'unlink');
         callback(filePath, false);
     });
 
