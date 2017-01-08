@@ -3,7 +3,6 @@ import path from "path";
 import child_process from "child_process";
 import shell from "shelljs";
 import program from "commander";
-import notifier from "node-notifier";
 import watch from "./util/watch.util";
 import log, {debug} from "./util/log.util";
 import config from "./config/index.config";
@@ -160,11 +159,6 @@ program
             let runtimeProcess;
 
             function startRuntimeProcess(runtimeFile) {
-                notifier.notify({
-                    title: 'KoaHub.js',
-                    message: '启动成功',
-                    icon: path.resolve(cliPath, 'icons/info.png')
-                });
                 runtimeProcess = child_process.fork(runtimeFile);
                 runtimeProcess.on('exit', function (code, signal) {
                     if (runtimeProcess.connected == false) {
