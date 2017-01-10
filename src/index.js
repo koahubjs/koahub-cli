@@ -9,7 +9,9 @@ import config from "./config/index.config";
 import packageFile from "./../package.json";
 
 function fileCopySync(src, dest) {
+    mkdirsSync(path.dirname(dest));
     fs.writeFileSync(dest, fs.readFileSync(src));
+    log(`[Copy] ${path.relative(process.cwd(), src)}`);
 }
 
 function getCliPath() {
@@ -107,6 +109,9 @@ function checkFilesChange(appName, runtimeName) {
 
     for (let key in files) {
         if (!checkFileExtensions(files[key])) {
+            if(path.basename(files[key]) != '.DS_Store'){
+                fileCopySync(files[key], getRuntimeFile(files[key], appName, runtimeName));
+            }
             continue;
         }
         let mTimeApp = fs.statSync(files[key]).mtime.getTime();
