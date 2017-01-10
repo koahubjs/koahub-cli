@@ -74,6 +74,13 @@ function mkdirsSync(dirname, mode) {
 function compileByBabel(file, appName, runtimeName) {
 
     let runtimeFile = getRuntimeFile(file, appName, runtimeName);
+    if (!checkFileExtensions(file)) {
+        if (path.basename(file) != '.DS_Store') {
+            fileCopySync(file, runtimeFile);
+        }
+        return;
+    }
+
     mkdirsSync(path.dirname(runtimeFile));
 
     let content = fs.readFileSync(file);
@@ -108,12 +115,6 @@ function checkFilesChange(appName, runtimeName) {
     let files = walk(appName);
 
     for (let key in files) {
-        if (!checkFileExtensions(files[key])) {
-            if(path.basename(files[key]) != '.DS_Store'){
-                fileCopySync(files[key], getRuntimeFile(files[key], appName, runtimeName));
-            }
-            continue;
-        }
         let mTimeApp = fs.statSync(files[key]).mtime.getTime();
         let runtimeFile = getRuntimeFile(files[key], appName, runtimeName);
 
