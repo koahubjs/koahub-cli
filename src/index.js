@@ -58,6 +58,7 @@ function walk(dir) {
 }
 
 function mkdirsSync(dirname, mode) {
+
     if (fs.existsSync(dirname)) {
         return true;
     } else {
@@ -83,10 +84,11 @@ function compileByBabel(file, appName, runtimeName) {
 
     fs.writeFileSync(`${runtimeFile}`, data.code);
 
-    log(`[Babel] ${file}`);
+    log(`[Babel] ${path.relative(process.cwd(), file)}`);
 }
 
 function checkFileExtensions(file) {
+
     const extensions = ['.js', '.jsx', '.es6', '.es'];
     let regExp, validate = false;
     for (let key in extensions) {
