@@ -11,7 +11,7 @@ import packageFile from "./../package.json";
 function fileCopySync(src, dest) {
     mkdirsSync(path.dirname(dest));
     fs.writeFileSync(dest, fs.readFileSync(src));
-    log(`[Copy] ${path.relative(process.cwd(), src)}`);
+    log(`[File] ${path.relative(process.cwd(), src)}`);
 }
 
 function getCliPath() {
