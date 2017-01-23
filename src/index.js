@@ -255,8 +255,8 @@ program
     .description('koahub create project')
     .action(function (project) {
 
-        shell.exec('git clone https://github.com/einsqing/koahubjs-demo.git');
-        fs.renameSync(path.resolve('koahubjs-demo'), path.resolve(project));
+        shell.exec('git clone https://github.com/einsqing/koahub-demo.git');
+        fs.renameSync(path.resolve('koahub-demo'), path.resolve(project));
     });
 
 // mainMoule路径中含有koahub-cli为命令行启动
