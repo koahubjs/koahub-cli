@@ -46,7 +46,7 @@ koahub create koahub-demo (自动初始化项目)
 
 
 ## KoaHub.js
-[KoaHub.js框架](https://github.com/einsqing/koahub)
+[KoaHub.js框架](https://github.com/koahubjs/koahub)
 
 ## 官网
 [KoaHub.js官网](http://js.koahub.com)

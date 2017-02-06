@@ -255,7 +255,7 @@ program
     .description('koahub create project')
     .action(function (project) {
 
-        shell.exec('git clone https://github.com/einsqing/koahub-demo.git');
+        shell.exec('git clone https://github.com/koahubjs/koahub-demo.git');
         fs.renameSync(path.resolve('koahub-demo'), path.resolve(project));
     });
 
