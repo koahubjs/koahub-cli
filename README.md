@@ -20,7 +20,7 @@ require('koahub-cli').run('start app/index.js --watch --compile');
 ## 安装使用
 ```sh
 
-//安装：npm install koahub-cli -g
+//安装：npm install git+https://github.com/koahubjs/koahub-cli.git -g
 //使用：
 koahub
 
