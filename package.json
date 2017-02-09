@@ -12,8 +12,7 @@
     "babel-preset-stage-3": "^6.22.0",
     "babel-runtime": "^6.22.0",
     "chokidar": "^1.6.1",
-    "commander": "^2.9.0",
-    "shelljs": "^0.7.6"
+    "commander": "^2.9.0"
   },
   "devDependencies": {
     "babel-cli": "^6.22.2",
@@ -54,5 +53,5 @@
     "compile": "babel src/ --out-dir lib/ --watch --source-maps",
     "test": "mocha test/{,**/}*.test.js --recursive --require babel-polyfill --compilers js:babel-register"
   },
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

@@ -5,11 +5,10 @@ KoaHub CLI -- KoaHub.js的开发工具，自动babel编译 ES6/7（Generator Fun
 ## 特性
 1. ​自动重启
 2. 自动babel编译
-3. 自动创建koahub项目
-4. 自动创建控制器
-5. 支持全局命令行
-6. 支持模块启动
-7. ...
+3. 自动创建控制器
+4. 支持全局命令行
+5. 支持模块启动
+6. ...
 
 ## 支持
 ```js
@@ -30,7 +29,6 @@ Commands:
 
 start [options] [script]  koahub start script --watch --compile
 controller [name]         koahub create controller
-create [project]          koahub create project
 
 Options:
 
@@ -41,7 +39,6 @@ Examples:
 
 koahub start app/index.js --watch --compile --runtime runtime (文件修改自动编译到runtime并且重启）
 koahub controller app/controller/home/article (自动创建控制器模版）
-koahub create koahub-demo (自动初始化项目)
 ```
 
 
