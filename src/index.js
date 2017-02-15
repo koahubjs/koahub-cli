@@ -4,7 +4,7 @@ import child_process from "child_process";
 import program from "commander";
 import watch from "./util/watch.util";
 import log, {debug} from "./util/log.util";
-import config from "./config/index.config";
+import config from "./config/default.config";
 import packageFile from "./../package.json";
 
 function fileCopySync(src, dest) {

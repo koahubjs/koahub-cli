@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/config/default.config.js"],"names":["app","runtime"],"mappings":";;;;;kBAAe;AACXA,SAAK,KADM;AAEXC,aAAS;AAFE,C","file":"default.config.js","sourcesContent":["export default {\n    app: 'app',\n    runtime: 'runtime'\n}\n"]}
