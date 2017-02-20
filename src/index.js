@@ -234,8 +234,8 @@ program
             }
         }
 
-        // 直接启动
-        require(runtimeFile);
+        // 直接启动, 无法require启动
+        child_process.fork(runtimeFile);
     });
 
 program
