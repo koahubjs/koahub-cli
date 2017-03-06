@@ -16,8 +16,23 @@ KoaHub CLI -- KoaHub.js的开发工具，自动Babel编译 ES6/7（Generator Fun
 require('koahub-cli').run('start app/index.js --watch --compile');
 ```
 
+## 快速创建项目
+
+```javascript
+//安装全局命令
+npm install github:koahubjs/koahub-cli -g
+//快速创建项目
+koahub create koahub-demo
+//进入项目
+cd koahub-demo
+//安装依赖
+npm install
+//启动项目
+npm start
+```
 
 ## 安装使用
+
 ```sh
 
 //安装：npm install github:koahubjs/koahub-cli -g
