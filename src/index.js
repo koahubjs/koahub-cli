@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import child_process from "child_process";
+import shell from "shelljs";
 import program from "commander";
 import watch from "./util/watch.util";
 import log, {debug} from "./util/log.util";
@@ -8,6 +9,7 @@ import config from "./config/default.config";
 import packageFile from "./../package.json";
 
 function fileCopySync(src, dest) {
+    
     mkdirsSync(path.dirname(dest));
     fs.writeFileSync(dest, fs.readFileSync(src));
     log(`[File] ${path.relative(process.cwd(), src)}`);
@@ -247,6 +249,14 @@ program
         const srcFile = path.resolve(getCliPath(), 'template/controller/index.controller.js');
 
         fileCopySync(srcFile, destFile);
+    });
+
+program
+    .command('create [project]')
+    .description('koahub create project')
+    .action(function (project) {
+
+        shell.exec(`git clone https://github.com/koahubjs/koahub-demo.git ${project}`);
     });
 
 // mainMoule路径中含有koahub-cli为命令行启动
