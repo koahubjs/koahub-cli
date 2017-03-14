@@ -88,8 +88,13 @@ function compileByBabel(file, appName, runtimeName) {
     let babel = require('babel-core');
     let data = babel.transform(content, {
         filename: file,
-        presets: ['es2015', 'stage-3'],
-        plugins: ['transform-runtime']
+        presets: [
+            ['env', {
+                'targets': {
+                    "node": 'current'
+                }
+            }]
+        ]
     });
 
     fs.writeFileSync(`${runtimeFile}`, data.code);
