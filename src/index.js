@@ -168,7 +168,7 @@ program
             let runtimeProcess;
 
             function startRuntimeProcess(runtimeFile) {
-                runtimeProcess = child_process.fork(runtimeFile);
+                runtimeProcess = child_process.fork(runtimeFile, [], {env: {APP: runtimeName}});
                 runtimeProcess.on('exit', function (code, signal) {
                     if (runtimeProcess.connected == false) {
                         process.exit();
@@ -237,7 +237,7 @@ program
         }
 
         // 直接启动, 无法require启动
-        child_process.fork(runtimeFile);
+        child_process.fork(runtimeFile, [], {env: {APP: runtimeName}});
     });
 
 program
