@@ -1,4 +1,4 @@
-export default class extends koahub.controller {
+module.exports = class extends koahub.controller {
 
     async _initialize() {
 
