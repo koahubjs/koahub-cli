@@ -55,7 +55,7 @@ Options:
 Examples:
 
 koahub start app/index.js --watch --compile --runtime runtime (文件修改自动编译到runtime并且重启）
-koahub controller app/controller/home/article (自动创建控制器模版）
+koahub controller app/controller/home/index (自动创建控制器模版）
 koahub create koahub-demo (自动初始化项目)
 ```
 
