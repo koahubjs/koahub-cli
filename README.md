@@ -20,7 +20,7 @@ require('koahub-cli').run('start app/index.js --watch --compile');
 
 ```javascript
 //安装全局命令
-npm install koahub-cli -g
+npm install koahubjs/koahub-cli -g
 //快速创建项目
 koahub create koahub-demo
 //进入项目
@@ -35,7 +35,7 @@ npm start
 
 ```sh
 
-//安装：npm install koahub-cli -g
+//安装：npm install koahubjs/koahub-cli -g
 //使用：
 koahub
 
